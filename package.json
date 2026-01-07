@@ -31,7 +31,8 @@
         "build:lib": "npm run build:routes && tsdown --config ./tsdown-lib.config.ts",
         "build:routes": "cross-env NODE_ENV=dev tsx scripts/workflow/build-routes.ts",
         "vercel-build": "npm run build:routes && tsdown --config ./tsdown-vercel.config.ts",
-        "worker-build": "tsdown --config ./tsdown-worker.config.ts",
+        "build:routes:worker": "cross-env NODE_ENV=dev WORKER_BUILD=true tsx scripts/workflow/build-routes.ts",
+        "worker-build": "npm run build:routes:worker && tsdown --config ./tsdown-worker.config.ts",
         "worker-dev": "npm run worker-build && wrangler dev",
         "worker-deploy": "npm run worker-build && wrangler deploy",
         "worker-test": "npm run worker-build && vitest run lib/worker.worker.test.ts",
@@ -113,7 +114,7 @@
         "markdown-it": "14.1.0",
         "mixi2": "0.2.2",
         "module-alias": "2.2.3",
-        "narou": "1.2.0",
+        "narou": "2.0.0",
         "notion-to-md": "3.1.9",
         "oauth-1.0a": "2.2.6",
         "ofetch": "1.5.1",
@@ -146,7 +147,7 @@
         "xxhash-wasm": "1.1.0",
         "youtube-caption-extractor": "1.9.1",
         "youtubei.js": "16.0.1",
-        "zod": "4.3.4"
+        "zod": "4.3.5"
     },
     "devDependencies": {
         "@babel/preset-env": "7.28.5",
@@ -175,8 +176,8 @@
         "@types/node": "25.0.3",
         "@types/sanitize-html": "2.16.0",
         "@types/supertest": "6.0.3",
-        "@typescript-eslint/eslint-plugin": "8.51.0",
-        "@typescript-eslint/parser": "8.51.0",
+        "@typescript-eslint/eslint-plugin": "8.52.0",
+        "@typescript-eslint/parser": "8.52.0",
         "@vercel/nft": "1.1.1",
         "@vitest/coverage-v8": "4.0.9",
         "discord-api-types": "0.38.37",
